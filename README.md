@@ -4,8 +4,8 @@
 TO DO:
 
 * Kod
-  - spam aby działał
-  - 4 metoda features selection
+  - ~~spam aby działał~~
+  - ~~4 metoda features selection~~
   - sposób do wyboru liczby features branych pod uwagę - wykresy ładne?
   - ile features biorą pod uwagę teraz poszczególne metody?
   - predict na X_test - assigned posterior probability for class '1'
