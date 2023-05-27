@@ -11,6 +11,7 @@ TO DO:
   - predict na X_test - assigned posterior probability for class '1'
   - high quality of code - utils, komentarze etc
   - experiments? czy to co mamy do wyboru liczby features wystarczy?
+  - puścić features selection na wybranych ilościach features + na tych dla testa predict zrobić
  
 * Report
   - experiments - precise description
