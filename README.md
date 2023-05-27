@@ -6,12 +6,13 @@ TO DO:
 * Kod
   - ~~spam aby działał~~
   - ~~4 metoda features selection~~
-  - ~~sposób do wyboru liczby features branych pod uwagę - wykresy ładne?~~ do boruty nwm co zrobić
+  - ~~sposób do wyboru liczby features branych pod uwagę - wykresy ładne?~~ 
   - ~~ile features biorą pod uwagę teraz poszczególne metody?~~
-  - predict na X_test - assigned posterior probability for class '1'
+  - ~~predict na X_test - assigned posterior probability for class '1'~~
   - high quality of code - utils, komentarze etc
   - experiments? czy to co mamy do wyboru liczby features wystarczy?
-  - puścić features selection na wybranych ilościach features + na tych dla testa predict zrobić
+  - ~~puścić features selection na wybranych ilościach features + na tych dla testa predict zrobić~~
+  - czy jakieś bardziej quality wykresy?
  
 * Report
   - experiments - precise description
@@ -21,7 +22,7 @@ TO DO:
   - description of used methods
   - bibliografia?
 
-* save results in CODE files
+* ~~save results in CODE files~~
 * Presentation
 * recording - up to 5min
 * ZIP files
