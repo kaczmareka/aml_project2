@@ -18,6 +18,7 @@ TO DO:
   - wykresiki
   - max 4 pages
   - description of used methods
+  - bibliografia?
 
 * save results in CODE files
 * Presentation
