@@ -24,6 +24,7 @@ TO DO:
   - bibliografia?
 
 * ~~save results in CODE files~~
-* Presentation
-* recording - up to 5min
-* ZIP files
+* Presentation [A & M, wg podziału z raportu]
+* recording text [A & M wg slajdów zrobionych]
+* recording - up to 5min [M]
+* ZIP files [M]
