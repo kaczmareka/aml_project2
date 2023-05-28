@@ -9,17 +9,18 @@ TO DO:
   - ~~sposób do wyboru liczby features branych pod uwagę - wykresy ładne?~~ 
   - ~~ile features biorą pod uwagę teraz poszczególne metody?~~
   - ~~predict na X_test - assigned posterior probability for class '1'~~
-  - high quality of code - utils, komentarze etc
-  - experiments? czy to co mamy do wyboru liczby features wystarczy?
+  - high quality of code - utils, komentarze etc [M]
+  - experiments? czy to co mamy do wyboru liczby features wystarczy? doszkolenie najlepszych [M]
   - ~~puścić features selection na wybranych ilościach features + na tych dla testa predict zrobić~~
-  - czy jakieś bardziej quality wykresy?
+  - czy jakieś bardziej quality wykresy? na x - features, labelki to modele; i więcej możliwych liczb features [M]
+  - 2 metody dodać do features selection [M]
  
 * Report
-  - experiments - precise description
-  - results+ interpretation
-  - wykresiki
+  - experiments - precise description [A]
+  - results+ interpretation [M]
+  - wykresiki [M]
   - max 4 pages
-  - description of used methods
+  - description of used methods [A]
   - bibliografia?
 
 * ~~save results in CODE files~~
