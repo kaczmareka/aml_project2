@@ -64,7 +64,7 @@ def ss_select_features(X, y, num_feats, model, direction):
     ss_selected_features = ss.get_support()
     return ss_selected_features 
 
-def L1_select_features(X, y, C=0.01):
+def l1_select_features(X, y, C=0.01):
     lsvc = LinearSVC(C=C, penalty="l1", dual=False)
     selector = SelectFromModel(lsvc, prefit=True).fit(X, y)
     l1_selected_features = selector.get_support()
