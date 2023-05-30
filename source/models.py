@@ -53,4 +53,3 @@ def sequential_search_train_model(model_name, X_train, y_train, X_val, y_val, da
     elif dataset_name=='spam':
         score=spam_score(BA, len(X_train.columns))
     return BA, score
-właś
