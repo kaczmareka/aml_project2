@@ -11,9 +11,9 @@ import numpy as np
 import pandas as pd
 random_state = 42
 
-def change_data_with_selected_features(X, features, boruta_lasso=False):
+def change_data_with_selected_features(X, features, boruta=False):
     column_names=X.columns
-    if boruta_lasso:
+    if boruta:
         features=np.where(features>0)
         features=features[0].tolist()
     column_names=column_names[features]
@@ -38,19 +38,6 @@ def boruta_select_features(X, y):
     features_imp_boruta_1=features_imp_boruta_1.astype(int)
     return features_imp_boruta_1
 
-def lasso_select_features(X, y):
-    features = X.columns
-    pipeline = Pipeline([
-                     ('scaler',StandardScaler()),
-                     ('model',Lasso())])
-    search = GridSearchCV(pipeline,
-                      {'model__alpha':np.arange(0.1,10,0.1)},
-                      cv = 5, scoring="balanced_accuracy",verbose=3)
-    search.fit(X,y)
-    coefficients = search.best_estimator_.named_steps['model'].coef_
-    importance = np.abs(coefficients)
-    lasso_selected_features = np.array(features)[importance > 0]
-    return lasso_selected_features
 
 def chi2_select_features(X,y, num_feats):
     chi_selector = SelectKBest(chi2, k=num_feats)
