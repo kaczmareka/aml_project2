@@ -2,7 +2,7 @@ from boruta import BorutaPy
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from sklearn.feature_selection import SelectKBest, chi2, RFE, SelectFromModel
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression, Lasso
 from sklearn.feature_selection import SequentialFeatureSelector
 import numpy as np
 import pandas as pd
@@ -66,8 +66,13 @@ def ss_select_features(X, y, num_feats, model, direction):
 
 def l1_select_features(X, y, C=0.01):
     lsvc = LinearSVC(C=C, penalty="l1", dual=False)
-    selector = SelectFromModel(lsvc, prefit=True).fit(X, y)
+    selector = SelectFromModel(lsvc).fit(X, y)
     l1_selected_features = selector.get_support()
     return l1_selected_features
+
+def lasso_select_features(X, y, ):
+    lasso = Lasso()
+    SelectFromModel
+    return lasso_selected_features
     
     

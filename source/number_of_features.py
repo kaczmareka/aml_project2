@@ -113,3 +113,19 @@ def search_best_C(possible_Cs, train_X, train_y, val_X, val_y, dataset_name):
             end_scores.loc[len(end_scores)] = [model, possible_Cs[i], BA, score]
     return(end_scores)
 
+def  plot_results_best_C(end_scores, title):
+    models=['xgb', 'lda', 'svc', 'lr', 'rf', 'dt', 'knn']
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+    fig.subplots_adjust(wspace=0.5)
+    fig.suptitle(title)
+    for i in range(len(models)):
+        model_scores = end_scores[end_scores['model']==models[i]]
+        ax1.plot(model_scores['C'], model_scores['BA'], label=models[i])
+        ax2.plot(model_scores['C'], model_scores['Score'], label=models[i])
+    ax1.set_xlabel('C')
+    ax1.set_ylabel('BA')
+    ax1.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
+    ax2.set_xlabel('C')
+    ax2.set_ylabel('Score')
+    ax2.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
+
