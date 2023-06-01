@@ -63,7 +63,7 @@ def search_best_features2(num_possible_features, method, train_X, train_y, val_X
         end_scores.append(to_append)
     plot_results(num_possible_features, end_scores, str(method)+" "+str(dataset_name))
 
-def search_best_features(num_possible_features, method, train_X, train_y, val_X, val_y, dataset_name):
+def search_best_features(num_possible_features, method, train_X, train_y, val_X, val_y, dataset_name, step=10):
     models=['xgb', 'lda', 'svc', 'lr', 'rf', 'dt', 'knn']
     index_list=[]
     for model in models:
@@ -76,7 +76,7 @@ def search_best_features(num_possible_features, method, train_X, train_y, val_X,
             if method=='chi2':
                 features = chi2_select_features(train_X, train_y, num_possible_features[i])
             elif method=='rfe':
-                features = rfe_select_features(train_X, train_y, num_possible_features[i])
+                features = rfe_select_features(train_X, train_y, num_possible_features[i], step=step)
             elif method=='gini':
                 features = gini_select_features(train_X, train_y, num_possible_features[i])
             elif method=="sfs":

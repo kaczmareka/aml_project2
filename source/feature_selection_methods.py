@@ -2,15 +2,18 @@ from boruta import BorutaPy
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from sklearn.feature_selection import SelectKBest, chi2, RFE, SelectFromModel
+from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import LogisticRegression, Lasso
 from sklearn.feature_selection import SequentialFeatureSelector
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
 import numpy as np
 import pandas as pd
 random_state = 42
 
-def change_data_with_selected_features(X, features, boruta=False):
+def change_data_with_selected_features(X, features, boruta_lasso=False):
     column_names=X.columns
-    if boruta:
+    if boruta_lasso:
         features=np.where(features>0)
         features=features[0].tolist()
     column_names=column_names[features]
@@ -35,14 +38,28 @@ def boruta_select_features(X, y):
     features_imp_boruta_1=features_imp_boruta_1.astype(int)
     return features_imp_boruta_1
 
+def lasso_select_features(X, y):
+    features = X.columns
+    pipeline = Pipeline([
+                     ('scaler',StandardScaler()),
+                     ('model',Lasso())])
+    search = GridSearchCV(pipeline,
+                      {'model__alpha':np.arange(0.1,10,0.1)},
+                      cv = 5, scoring="balanced_accuracy",verbose=3)
+    search.fit(X,y)
+    coefficients = search.best_estimator_.named_steps['model'].coef_
+    importance = np.abs(coefficients)
+    lasso_selected_features = np.array(features)[importance > 0]
+    return lasso_selected_features
+
 def chi2_select_features(X,y, num_feats):
     chi_selector = SelectKBest(chi2, k=num_feats)
     chi_selector.fit(X, y)
     chi_selected_features=chi_selector.get_support()
     return chi_selected_features
 
-def rfe_select_features(X, y, num_feats):
-    rfe_selector = RFE(estimator=LogisticRegression(), n_features_to_select=num_feats, step=10, verbose=5)
+def rfe_select_features(X, y, num_feats, step=10):
+    rfe_selector = RFE(estimator=LogisticRegression(), n_features_to_select=num_feats, step=step, verbose=5)
     rfe_selector.fit(X, y)
     rfe_selected_features = rfe_selector.get_support()
     return rfe_selected_features
@@ -70,9 +87,5 @@ def l1_select_features(X, y, C=0.01):
     l1_selected_features = selector.get_support()
     return l1_selected_features
 
-def lasso_select_features(X, y, ):
-    lasso = Lasso()
-    SelectFromModel
-    return lasso_selected_features
     
     
